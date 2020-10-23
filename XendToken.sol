@@ -59,7 +59,7 @@ contract XendToken is ERC20Pausable {
         virtual
         onlyMinter
     {
-        _mint(recipient, amount);
+        _transfer(owner, recipient, amount);
     }
 
     function withdraw() public virtual onlyOwner {
