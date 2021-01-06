@@ -1,9 +1,7 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.6.0;
-import "./Context.sol";
+pragma solidity ^0.6.2;
 import "./ERC20Pausable.sol";
-import "./ERC20Burnable.sol";
 import "./ERC20.sol";
 import "./SafeMath.sol";
 
@@ -71,7 +69,7 @@ contract XendToken is ERC20Pausable {
         return _price;
     }
 
-    function SetPrice(uint256 priceInWei) public {
+    function SetPrice(uint256 priceInWei) public onlyOwner {
         _price = priceInWei;
     }
 
