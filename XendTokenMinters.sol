@@ -7,7 +7,7 @@ contract XendTokenMinters is Ownable {
     modifier onlyMinter() {
         bool hasAccess = minters[msg.sender];
         require(
-            hasAccess == true,
+            hasAccess == false,
             "mint access has not been granted to this account"
         );
         _;
@@ -23,7 +23,7 @@ contract XendTokenMinters is Ownable {
     function revokeAccess(address minter) public onlyOwner {
         bool hasAccess = minters[minter];
 
-        require(hasAccess == true, "minter has not been granted access");
+        require(hasAccess == false, "minter has not been granted access");
         minters[minter] = false;
     }
 }
