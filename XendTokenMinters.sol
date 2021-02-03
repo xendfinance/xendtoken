@@ -1,4 +1,4 @@
-pragma solidity ^0.6.4;
+pragma solidity ^0.6.6;
 import "./Ownable.sol";
 
 contract XendTokenMinters is Ownable {
@@ -6,8 +6,7 @@ contract XendTokenMinters is Ownable {
 
     modifier onlyMinter() {
         bool hasAccess = minters[msg.sender];
-        require(
-            hasAccess == false,
+        require(hasAccess == true,
             "mint access has not been granted to this account"
         );
         _;
@@ -16,14 +15,14 @@ contract XendTokenMinters is Ownable {
     function grantAccess(address minter) public onlyOwner {
         bool hasAccess = minters[minter];
 
-        require(hasAccess == false, "minter has already been granted access");
+        require(hasAccess == true, "minter has already been granted access");
         minters[minter] = true;
     }
 
     function revokeAccess(address minter) public onlyOwner {
         bool hasAccess = minters[minter];
 
-        require(hasAccess == false, "minter has not been granted access");
+        require(hasAccess == true, "minter has not been granted access");
         minters[minter] = false;
     }
 }
