@@ -66,7 +66,7 @@ contract ERC20 is Context, XendTokenMinters, IERC20 {
         _decimals = decimals;
         _totalSupply = totalSupply;
 
-        _balances[msg.sender] = totalSupply;
+        _balances[msg.sender] = _totalSupply;
 
         emit Transfer(address(0), msg.sender, totalSupply);
     }
